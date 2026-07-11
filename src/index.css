@@ -2,6 +2,7 @@
 @tailwind utilities;
 
 @import "./assets/fonts/Panchang/WEB/css/panchang.css";
+@import "./assets/fonts/Architects_Daughter/style.css";
 
 :root {
   --light: #efefef;
@@ -16,6 +17,7 @@
 
 @theme {
   --font-panchang: "Panchang", sans-serif;
+  --font-archiDaughter: "Architects Daughter", sans-serif;
   --color-dark: var(--dark);
   --color-light: var(--light);
 }
