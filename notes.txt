@@ -3,6 +3,9 @@ npx gltf-pipeline -i inputModel.glb -o optimizedModel.glb -d
 wasnt as efficient
 
 used https://gltf.report/
+take your downloaded file and drag it into gltf.report.Go to the Script or Simplify tab.Run the Draco compression tool.Check the texture sizes and compress them to WebP or compressed PNGs right inside the browser interface.Export the newly optimized .glb.
+
+Exporting the correct compression presetWhen you click Export in the upper-right corner of gltf.report, look closely at the configuration settings:If you choose Draco, make sure you pass true to your useGLTF() hook in React Three Fiber so it decodes correctly.If you choose Meshopt, it is often even better for animated models because it compresses animation timelines seamlessly.If you choose Meshopt, you just need to adjust your React model loader component to use Three's built-in Meshopt Decoder like this:
 
 
 model author CC attributoin 
@@ -19,3 +22,10 @@ some of the resources i used `https://gsap.com/resources/React/`
 lenis react setup guide and gsap connection `https://github.com/darkroomengineering/lenis/blob/main/packages/react/README.md`
 
 
+video i used to get the basics down `https://www.youtube.com/watch?v=PrQeeUt49f4`
+
+
+react 3 fiber gs `https://r3f.docs.pmnd.rs/getting-started/introduction`
+
+Easing is the primary way to change the timing of your tweens. Simply changing the ease can adjust the entire feel and personality of your animation. There are infinite eases that you can use in GSAP so we created the visualizer below to help you choose exactly the type of easing that you need.
+for easing `https://gsap.com/docs/v3/Eases/`

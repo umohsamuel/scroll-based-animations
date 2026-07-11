@@ -14,9 +14,8 @@ export default function Loader({ isLoaded }: { isLoaded: boolean }) {
     if (isLoaded && loaderRef.current) {
       gsap.to(loaderRef.current, {
         opacity: 0,
-        y: "-100%",
         duration: 0.8,
-        ease: "power3.inOut",
+        ease: "power2.inOut",
         onComplete: () => {
           if (loaderRef.current) loaderRef.current.style.display = "none";
           ScrollTrigger.refresh();

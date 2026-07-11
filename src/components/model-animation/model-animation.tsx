@@ -21,10 +21,13 @@ export default function ModelAnimation() {
   return (
     <div
       ref={scrollSectionRef}
-      className="canvas-container relative h-[400vh] bg-linear-to-b from-light to-dark text-dark w-full"
+      className=" relative h-[400vh] bg-linear-to-b from-light to-dark text-dark w-full"
     >
-      <div className=" sticky top-0 h-[100vh] w-full overflow-hidden">
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+      <div className="sticky top-0 h-[100vh] w-full overflow-hidden">
+        <Canvas
+          camera={{ position: [0, 0, 6], fov: 45 }}
+          className="z-30 relative"
+        >
           <ambientLight intensity={1.5} />
           <directionalLight position={[10, 10, 5]} intensity={2} />
 
@@ -69,18 +72,28 @@ function AnimatedModel({ scrollSectionRef }: ModelProps) {
         },
       });
 
-      tl.to(
+      tl.fromTo(
+        modelRef.current.position,
+        {
+          x: -1.4,
+          z: 0,
+        },
+        {
+          x: 2.5,
+          z: -2.5,
+          ease: "power1.inOut",
+        },
+        0
+      );
+
+      tl.fromTo(
         modelRef.current.rotation,
+        {
+          y: 0,
+        },
         {
           y: Math.PI * 2,
           ease: "none",
-        },
-        0
-      ).to(
-        modelRef.current.position,
-        {
-          x: 2.5,
-          ease: "power1.inOut",
         },
         0
       );
@@ -89,16 +102,12 @@ function AnimatedModel({ scrollSectionRef }: ModelProps) {
         const primaryAction = actions[names[0]];
         if (primaryAction) primaryAction.play();
       }
-
-      return () => {
-        tl.kill();
-      };
     },
-    { scope: scrollSectionRef, dependencies: [scene, actions, names] }
+    { scope: scrollSectionRef, dependencies: [scene, actions, names, modelRef] }
   );
 
   return (
-    <group ref={modelRef} position={[-2.5, 0, 0]}>
+    <group ref={modelRef} position={[0, 0, 0]}>
       <Center>
         <primitive object={scene} />
       </Center>

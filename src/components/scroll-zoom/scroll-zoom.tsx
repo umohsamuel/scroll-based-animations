@@ -37,7 +37,7 @@ export default function ScrollZoom() {
         {
           xPercent: -250,
           ease: "power4.out",
-          duration: 1.5,
+          duration: 1,
         },
         0
       );
@@ -47,7 +47,7 @@ export default function ScrollZoom() {
         {
           xPercent: 250,
           ease: "power4.out",
-          duration: 1.5,
+          duration: 1,
         },
         0
       );
@@ -56,15 +56,11 @@ export default function ScrollZoom() {
         ".extraBox",
         {
           scaleX: 0,
-          ease: "power1.out",
+          ease: "none",
           duration: 0.5,
         },
         "-=0.3"
       );
-
-      return () => {
-        tl.kill();
-      };
     },
     { scope: container }
   );
@@ -85,7 +81,7 @@ export default function ScrollZoom() {
               <br />
               enter
               <br />
-              umoh
+              <span className="font-archiDaughter">by umoh</span>
               <br />
             </h1>
           </div>

@@ -10,6 +10,7 @@ import ScrollZoom from "./components/scroll-zoom/scroll-zoom.tsx";
 import ModelAnimation from "./components/model-animation/model-animation.tsx";
 import { useProgress } from "@react-three/drei";
 import Loader from "./components/loader/loader.tsx";
+import StaggeredCards from "./components/staggered-cards/staggered-cards.tsx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -70,6 +71,7 @@ function App() {
         >
           <ScrollZoom />
           <ModelAnimation />
+          <StaggeredCards />
         </div>
       </ReactLenis>
     </main>
