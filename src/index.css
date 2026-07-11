@@ -1,9 +1,14 @@
 @import "tailwindcss";
+@tailwind utilities;
+
 @import "./assets/fonts/Panchang/WEB/css/panchang.css";
 
 :root {
-  color: white;
-  background-color: black;
+  --light: #efefef;
+  --dark: #000000;
+
+  color: var(--light);
+  background-color: var(--dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -11,4 +16,6 @@
 
 @theme {
   --font-panchang: "Panchang", sans-serif;
+  --color-dark: var(--dark);
+  --color-light: var(--light);
 }

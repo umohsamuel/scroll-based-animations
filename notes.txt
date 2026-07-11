@@ -1,0 +1,21 @@
+used cli tool compress 3d model 
+npx gltf-pipeline -i inputModel.glb -o optimizedModel.glb -d
+wasnt as efficient
+
+used https://gltf.report/
+
+
+model author CC attributoin 
+"Priest - Aurvandill" (https://skfb.ly/pLyzH) by Vasian-Digital3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+i downloaded with sketch fab from `https://sketchfab.com/3d-models/priest-aurvandill-d6a8bca5d5e949ae9be3e19c343387fd#download`
+
+
+should i link documentation in an article? does that not defeat the purpose of my guide?
+
+well i can link for more reading on the topic aspect
+
+some of the resources i used `https://gsap.com/resources/React/`
+lenis react setup guide and gsap connection `https://github.com/darkroomengineering/lenis/blob/main/packages/react/README.md`
+
+

@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/models/3d/priest.glb",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

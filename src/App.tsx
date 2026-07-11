@@ -1,12 +1,15 @@
 // import "./App.css";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { type LenisRef, ReactLenis } from "lenis/react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScrollZoom from "./components/scroll-zoom/scroll-zoom";
+import ScrollZoom from "./components/scroll-zoom/scroll-zoom.tsx";
+import ModelAnimation from "./components/model-animation/model-animation.tsx";
+import { useProgress } from "@react-three/drei";
+import Loader from "./components/loader/loader.tsx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +17,16 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   const lenisRef = useRef<LenisRef | null>(null);
   const containerRef = useRef(null);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const { active } = useProgress();
+
+  useEffect(() => {
+    if (!active) {
+      setIsLoaded(true);
+    }
+  }, [active]);
 
   useEffect(() => {
     function update(time: number) {
@@ -33,22 +46,33 @@ function App() {
 
       lenis.on("scroll", ScrollTrigger.update);
 
+      if (!isLoaded) {
+        lenis.stop();
+      } else {
+        lenis.start();
+      }
+
       return () => {
         lenis.off("scroll", ScrollTrigger.update);
       };
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [isLoaded] }
   );
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-      <div
-        ref={containerRef}
-        className="flex justify-center min-h-screen items-center w-full h-full"
-      >
-        <ScrollZoom />
-      </div>
-    </ReactLenis>
+    <main>
+      <Loader isLoaded={isLoaded} />
+
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+        <div
+          ref={containerRef}
+          className="flex flex-col min-h-screen w-full font-panchang "
+        >
+          <ScrollZoom />
+          <ModelAnimation />
+        </div>
+      </ReactLenis>
+    </main>
   );
 }
 

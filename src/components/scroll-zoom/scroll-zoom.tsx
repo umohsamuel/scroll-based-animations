@@ -8,63 +8,81 @@ export default function ScrollZoom() {
 
   useGSAP(
     () => {
-      const exp = gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".experience",
+          trigger: ".animation",
           start: "top top",
           end: "+=5000",
           scrub: true,
-          // markers: true,
-          pin: ".experience",
+          pin: ".animation",
         },
       });
 
-      exp.to(".experience-middle", {
-        "--progress1": 0.4,
+      tl.to(".animation-middle", {
+        "--progress1": 0.6,
         ease: "none",
+        duration: 1.5,
       });
 
-      exp.to(
-        ".experience-top",
+      tl.to(
+        ".animation-top",
         {
-          xPercent: -200,
-          ease: "none",
+          xPercent: -250,
+          ease: "power4.out",
+          duration: 1.5,
         },
-        "<"
+        0
       );
-      exp.to(
-        ".experience-bottom",
+      tl.to(
+        ".animation-bottom",
         {
-          xPercent: 200,
-          ease: "none",
+          xPercent: 250,
+          ease: "power4.out",
+          duration: 1.5,
         },
-        "<"
+        0
       );
 
-      exp.from(".extraBox", {
-        scaleX: 0,
-        ease: "none",
-      });
+      tl.from(
+        ".extraBox",
+        {
+          scaleX: 0,
+          ease: "power1.out",
+          duration: 0.5,
+        },
+        "-=0.3"
+      );
+
+      return () => {
+        tl.kill();
+      };
     },
     { scope: container }
   );
 
   return (
-    <div ref={container} className="w-full h-full m-0">
-      <div className="experience">
-        <div className="extraBox"></div>
-        <div className="experience-show">
-          <h1 className="experience-top">Let Me show you</h1>
-          <div className="experience-middle-container">
-            <h1 className="experience-middle font-panchang">Enter T Enter</h1>
+    <div ref={container} className="w-full h-full m-0 bg-dark text-light">
+      <div className="animation relative w-full h-[100vh] z-10 overflow-hidden">
+        <div className="extraBox absolute inset-0 w-full h-full z-10 pointer-events-none origin-center bg-light" />
+        <div className="text-5xl font-bold">
+          <h1 className="animation-top absolute top-[5%] left-[2.5%] text-5xl font-bold">
+            Hot EBA dey for you
+          </h1>
+          <div className="inset-0 absolute grid place-items-center pointer-events-none">
+            <h1 className="animation-middle origin-center font-black whitespace-nowrap text-[clamp(4rem,18vw,15rem)] text-center">
+              <br />
+              ENTER
+              <br />
+              UMOH
+              <br />
+            </h1>
           </div>
-          <h1 className="experience-bottom">My Magic Trick</h1>
+          <h1 className="animation-bottom right-[2.5%] bottom-[5%] absolute">
+            Scroll down to see
+          </h1>
           <div className="spacer-end"></div>
         </div>
       </div>
-      <section className="bg-linear-to-b from-white to-black">
-        another section
-      </section>
     </div>
   );
 }
