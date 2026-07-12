@@ -1,32 +1,59 @@
-# React + TypeScript + Vite
+# Scroll Based Animations
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A collection of high-performance, scroll-linked animations built with React, GSAP, Lenis, and React Three Fiber.
 
-Currently, two official plugins are available:
+This repository serves as the companion codebase to the technical guide on implementing fluid scroll-based animations and handling synchronization between GSAP and Lenis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Smooth scrolling implementation using Lenis.
+- Synchronization of GSAP's internal ticker with the Lenis scroll thread.
+- Staggered card animations based on scroll progress.
+- Horizontal scrolling sections nested inside vertical scroll containers.
+- Sticky vertical sections that pin content while adjacent panels scroll.
+- 3D model animations using React Three Fiber, tying object rotation and translation directly to scroll events.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+- React
+- TypeScript
+- GSAP (with `@gsap/react` and ScrollTrigger)
+- Lenis
+- Three.js / React Three Fiber
+- Tailwind CSS
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Getting Started
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### Prerequisites
+
+Ensure you have Bun installed on your machine.
+
+### Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/umohsamuel/scroll-based-animations.git
+cd scroll-based-animations
+bun install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Running the Project
+
+Start the development server:
+
+```bash
+bun run dev
+```
+
+The application will be available at `http://localhost:5173`.
+
+## Architecture Overview
+
+The animation system relies on linking Lenis' custom scroll timeline directly to GSAP's refresh cycle. This prevents the native browser scroll from causing jittering and mismatched frames between the animations and the user's viewport. 
+
+All animations are controlled via GSAP timelines anchored by ScrollTrigger, eliminating the need for hardcoded delays and providing absolute control over animation sequencing.
+
+## License
+
+MIT
