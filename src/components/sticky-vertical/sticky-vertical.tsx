@@ -55,9 +55,9 @@ export default function StickyVertical({
           className="w-1/2 h-full flex flex-col justify-center items-center col_left"
         >
           <div className="vertical_heading h-[500px] w-[500px] bg-light border-2 border-solid border-dark text-7xl font-black text-dark flex flex-col items-center justify-center gap-4 uppercase font-archiDaughter">
-            <span>About</span>
-            <span>Smooth</span>
-            <span>Scroll</span>
+            <span>Chill</span>
+            <span>Sticky</span>
+            <span>Guy</span>
           </div>
         </div>
 
