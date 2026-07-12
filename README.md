@@ -2,7 +2,7 @@
 
 A collection of high-performance, scroll-linked animations built with React, GSAP, Lenis, and React Three Fiber.
 
-This repository serves as the companion codebase to the technical guide on implementing fluid scroll-based animations and handling synchronization between GSAP and Lenis.
+This repository serves as the companion codebase to the technical guide on implementing fluid scroll-based animations and handling synchronization between GSAP and Lenis. [Read here](https://www.umohsg.com/blog/scroll-based-animations-with-lenis-gsap-threejs-typescript-ad5c77d6-ec34-4a95-9f2b-9d38ce6c8abb)
 
 ## Features
 
@@ -50,7 +50,7 @@ The application will be available at `http://localhost:5173`.
 
 ## Architecture Overview
 
-The animation system relies on linking Lenis' custom scroll timeline directly to GSAP's refresh cycle. This prevents the native browser scroll from causing jittering and mismatched frames between the animations and the user's viewport. 
+The animation system relies on linking Lenis' custom scroll timeline directly to GSAP's refresh cycle. This prevents the native browser scroll from causing jittering and mismatched frames between the animations and the user's viewport.
 
 All animations are controlled via GSAP timelines anchored by ScrollTrigger, eliminating the need for hardcoded delays and providing absolute control over animation sequencing.
 
