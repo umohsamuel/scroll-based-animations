@@ -13,7 +13,7 @@ export default function StaggeredCards() {
         scrollTrigger: {
           trigger: container.current,
           start: "top top",
-          end: "bottom bottom",
+          end: `+=4000px`,
           pin: true,
           scrub: true,
           invalidateOnRefresh: true,
@@ -50,12 +50,12 @@ export default function StaggeredCards() {
   );
 
   return (
-    <div ref={container} className="relative z-0 w-full h-[800vh]">
-      <div className="card-container bg-linear-to-b from-dark to-light sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={container} className="relative w-full h-[100vh] overflow-hidden">
+      <div className="card-container h-screen w-full overflow-hidden">
         {cardsArr.map((v, i) => (
           <div
             key={v + i}
-            className="card absolute top-10 left-10 w-[500px] h-[500px] border-2 border-solid border-black shadow-xl flex justify-center items-center bg-light text-dark font-bold font-panchang text-5xl opacity-15"
+            className="card absolute top-10 left-10 w-[500px] h-[500px] border-2 border-solid border-dark shadow-xl flex justify-center items-center bg-light text-dark font-bold font-panchang text-5xl opacity-15"
           >
             <span className="absolute top-[5%] left-[5%] font-archiDaughter text-6xl font-extrabold">
               {normalizeNumber(i + 1)}

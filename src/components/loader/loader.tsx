@@ -40,7 +40,7 @@ export default function Loader({ isLoaded }: { isLoaded: boolean }) {
         </h2>
         <div className="relative w-full h-6  overflow-hidden">
           <div
-            className="text-sm absolute inset-0 bg-black h-full flex justify-center items-center text-light transition-colors duration-300 ease-linear text-center"
+            className="text-sm absolute inset-0 bg-dark h-full flex justify-center items-center text-light transition-colors duration-300 ease-linear text-center"
             style={{ width: `${progress}%` }}
           >
             {Math.round(progress)}%

@@ -11,6 +11,8 @@ import ModelAnimation from "./components/model-animation/model-animation.tsx";
 import { useProgress } from "@react-three/drei";
 import Loader from "./components/loader/loader.tsx";
 import StaggeredCards from "./components/staggered-cards/staggered-cards.tsx";
+import StickyVertical from "./components/sticky-vertical/sticky-vertical.tsx";
+import HorizontalScroll from "./components/horizontal-scroll/horizontal-scroll.tsx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -65,13 +67,14 @@ function App() {
       <Loader isLoaded={isLoaded} />
 
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-        <div
-          ref={containerRef}
-          className="flex flex-col min-h-screen w-full font-panchang "
-        >
+        <div ref={containerRef} className="min-h-screen w-full font-panchang ">
           <ScrollZoom />
           <ModelAnimation />
-          <StaggeredCards />
+          <div className="bg-linear-to-b from-dark via-light  to-dark">
+            <StaggeredCards />
+            <StickyVertical />
+            <HorizontalScroll />
+          </div>
         </div>
       </ReactLenis>
     </main>

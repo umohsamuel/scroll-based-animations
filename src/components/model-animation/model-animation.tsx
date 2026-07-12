@@ -24,10 +24,7 @@ export default function ModelAnimation() {
       className=" relative h-[400vh] bg-linear-to-b from-light to-dark text-dark w-full"
     >
       <div className="sticky top-0 h-[100vh] w-full overflow-hidden">
-        <Canvas
-          camera={{ position: [0, 0, 6], fov: 45 }}
-          className="z-30 relative"
-        >
+        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
           <ambientLight intensity={1.5} />
           <directionalLight position={[10, 10, 5]} intensity={2} />
 
