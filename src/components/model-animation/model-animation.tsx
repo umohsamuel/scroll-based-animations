@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { type GLTF } from "three-stdlib";
 import * as THREE from "three";
 
@@ -52,6 +52,7 @@ function AnimatedModel({ scrollSectionRef }: ModelProps) {
   }) as GLTFResult;
 
   const { actions, names } = useAnimations(animations, modelRef);
+  const { viewport } = useThree();
 
   useGSAP(
     () => {
@@ -72,11 +73,11 @@ function AnimatedModel({ scrollSectionRef }: ModelProps) {
       tl.fromTo(
         modelRef.current.position,
         {
-          x: -1.4,
+          x: -(viewport.width / 2) + 2.5,
           z: 0,
         },
         {
-          x: 2.5,
+          x: viewport.width / 2 + 1,
           z: -2.5,
           ease: "power1.inOut",
         },
@@ -104,7 +105,7 @@ function AnimatedModel({ scrollSectionRef }: ModelProps) {
   );
 
   return (
-    <group ref={modelRef} position={[0, 0, 0]}>
+    <group ref={modelRef}>
       <Center>
         <primitive object={scene} />
       </Center>
